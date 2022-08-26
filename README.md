@@ -1,4 +1,4 @@
-# Inventory Management Exam
+# Inventory Management
 
 git clone https://github.com/ArriannePandaraoan/InvMgmtTst.git <br>
 npm install<br>
