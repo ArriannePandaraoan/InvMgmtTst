@@ -1,6 +1,8 @@
-#Inventory Management Exam
+# Inventory Management Exam
 
-##server-api
+## :open_file_folder: server-api
 It contains the db.json for storing data.
 
-##
+## npm install
+
+## npm start
