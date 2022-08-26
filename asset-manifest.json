@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/InvMgmtTst/static/css/main.4e047401.css",
+    "main.js": "/InvMgmtTst/static/js/main.1ef91ae2.js",
+    "static/js/787.c4661113.chunk.js": "/InvMgmtTst/static/js/787.c4661113.chunk.js",
+    "static/media/title-chalk-font.png": "/InvMgmtTst/static/media/title-chalk-font.edb3757c87ccd8d2f0eb.png",
+    "index.html": "/InvMgmtTst/index.html",
+    "main.4e047401.css.map": "/InvMgmtTst/static/css/main.4e047401.css.map",
+    "main.1ef91ae2.js.map": "/InvMgmtTst/static/js/main.1ef91ae2.js.map",
+    "787.c4661113.chunk.js.map": "/InvMgmtTst/static/js/787.c4661113.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e047401.css",
+    "static/js/main.1ef91ae2.js"
+  ]
+}
