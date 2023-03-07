@@ -31,7 +31,7 @@ const Component = () => {
   const [price, setPrice] = useState(0);
   const [remark, setRemark] = useState("");
 
-  const host = `${process.env.REACT_APP_LIVE}`;
+  const host = process.env.REACT_APP_LIVE;
 
   const data = {
     name: name,
@@ -49,7 +49,7 @@ const Component = () => {
       //   "https://my-json-server.typicode.com/ArriannePandaraoan/json_db/crops",
       //   data
       // )
-      .post(host + "/add-crop", data);
+      .post(host + `${"/add-crop"}`, data);
     // .then((response: AxiosResponse<any>) => {
     // .then((response) => {
     nav(-1);

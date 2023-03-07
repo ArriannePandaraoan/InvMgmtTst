@@ -15,6 +15,7 @@
     "@types/react-router-dom": "^5.3.3",
     "antd": "^4.22.7",
     "axios": "^0.27.2",
+    "env-cmd": "^10.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
@@ -27,12 +28,14 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd -f .env react-scripts start",
+    "build": "env-cmd -f .env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "start:qa": "env-cmd -f .env.qa react-scripts start",
+    "build:qa": "env-cmd -f .env.qa react-scripts build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,8 +57,10 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
+    "dotenv-webpack": "^8.0.1",
     "gh-pages": "^4.0.0",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "webpack-dotenv-plugin": "^2.1.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",

@@ -51,7 +51,7 @@ const Component = () => {
 
   const navigate: any = useNavigate();
 
-  const host = `${process.env.REACT_APP_LIVE}`;
+  const host = process.env.REACT_APP_LIVE;
 
   function getCrops() {
     // axios.get("http://localhost:3006/crops").then((response) => {
@@ -62,7 +62,7 @@ const Component = () => {
     //   .then((res) => {
     // setCrops(res.data.reverse());
     // axios.get("http://localhost:4000/crops").then((response) => {
-    axios.get(host + "/crops").then((response) => {
+    axios.get(host + `${"/crops"}`).then((response) => {
       setCrops(
         response.data
           .reverse()
@@ -148,10 +148,10 @@ const Component = () => {
     console.log("deleted item", id);
     axios
       // .delete(`http://localhost:3006/crops/${id}`)
-      .delete(`http://localhost:4000/delete-crop/${id}`);
-    // .then((resp: AxiosResponse<any>) => {
-    getCrops();
-    // });
+      .delete(host + `${"/delete-crop/"}${id}`)
+      .then((resp: AxiosResponse<any>) => {
+        getCrops();
+      });
   }
 
   function searchTable(rows: any) {
