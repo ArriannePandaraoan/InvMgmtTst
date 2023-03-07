@@ -9,11 +9,11 @@
       "id": 1
     },
     {
-      "name": "Pumpkin",
-      "description": "NPK (100 lb/acre), (50 lb/acre), ((110 lb/acre)",
-      "quantity": 1000,
-      "price": 2698.65,
-      "remark": "NA",
+      "name": "Grape",
+      "description": "Crop Rotation 2020 - 2021",
+      "quantity": 444,
+      "price": 50.6,
+      "remark": "N/A",
       "id": 2
     }
   ]

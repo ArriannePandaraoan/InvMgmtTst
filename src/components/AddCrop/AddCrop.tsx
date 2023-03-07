@@ -31,6 +31,8 @@ const Component = () => {
   const [price, setPrice] = useState(0);
   const [remark, setRemark] = useState("");
 
+  const host = `${process.env.REACT_APP_LIVE}`;
+
   const data = {
     name: name,
     description: description,
@@ -42,10 +44,16 @@ const Component = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     axios
-      .post("http://localhost:3006/crops", data)
-      .then((resp: AxiosResponse<any>) => {
-        nav(-1);
-      });
+      // .post("http://localhost:3006/crops", data)
+      // .post(
+      //   "https://my-json-server.typicode.com/ArriannePandaraoan/json_db/crops",
+      //   data
+      // )
+      .post(host + "/add-crop", data);
+    // .then((response: AxiosResponse<any>) => {
+    // .then((response) => {
+    nav(-1);
+    // });
   }
 
   const addCropValidation = async (e: any) => {

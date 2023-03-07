@@ -51,11 +51,20 @@ const Component = () => {
 
   const navigate: any = useNavigate();
 
+  const host = `${process.env.REACT_APP_LIVE}`;
+
   function getCrops() {
-    axios.get("http://localhost:3006/crops").then((res) => {
-      // setCrops(res.data.reverse());
+    // axios.get("http://localhost:3006/crops").then((response) => {
+    // axios
+    //   .get(
+    //     "https://my-json-server.typicode.com/ArriannePandaraoan/json_db/crops"
+    //   )
+    //   .then((res) => {
+    // setCrops(res.data.reverse());
+    // axios.get("http://localhost:4000/crops").then((response) => {
+    axios.get(host + "/crops").then((response) => {
       setCrops(
-        res.data
+        response.data
           .reverse()
           .map(
             (crop: {
@@ -89,7 +98,10 @@ const Component = () => {
     e.preventDefault();
     setData(filteredCrop);
     return await axios
-      .get(`http://localhost:3006/crops?q=${value}`)
+      // .get(`http://localhost:3006/crops?q=${value}`)
+      .get(
+        `https://my-json-server.typicode.com/ArriannePandaraoan/json_db/crops?q=${value}`
+      )
       .then((res) => {
         setData(res.data);
         setValue("");
@@ -133,12 +145,13 @@ const Component = () => {
   }
 
   function deleteList(id: any) {
-    console.log("asdasd", id);
+    console.log("deleted item", id);
     axios
-      .delete(`http://localhost:3006/crops/${id}`)
-      .then((resp: AxiosResponse<any>) => {
-        getCrops();
-      });
+      // .delete(`http://localhost:3006/crops/${id}`)
+      .delete(`http://localhost:4000/delete-crop/${id}`);
+    // .then((resp: AxiosResponse<any>) => {
+    getCrops();
+    // });
   }
 
   function searchTable(rows: any) {

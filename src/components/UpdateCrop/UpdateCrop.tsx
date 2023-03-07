@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd";
 import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router";
 import axios, { AxiosResponse } from "axios";
 
@@ -34,10 +34,16 @@ const Component = () => {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [remark, setRemark] = useState("");
+  const [, setData] = useState({});
+
+  const host = `${process.env.REACT_APP_LIVE}`;
+  const varId = `${loc.id}`;
 
   const [crops, setCrops] = useState<any[]>([]);
 
   const { id } = useParams();
+
+  const [form] = Form.useForm();
 
   // function getCrops() {
   //   axios.get(`http://localhost:3006/crops/${id}`).then((res) => {
@@ -58,8 +64,10 @@ const Component = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3006/crops/${loc.id}`).then((res) => {
-      console.log("asd", res);
+    // axios.get(`http://localhost:3006/crops/${loc.id}`).then((res) => {
+    // axios.get(`http://localhost:4000/crops/${loc.id}`).then((res) => {
+    axios.get(host + "/crops/" + varId).then((res) => {
+      console.log("inside form: ", res);
       setName(res.data.name);
       setDescription(res.data.description);
       setQuantity(res.data.quantity);
@@ -67,8 +75,6 @@ const Component = () => {
       setRemark(res.data.remark);
     });
   }, []);
-
-  console.log("asdas", name);
 
   // function getCrops() {
   //   axios.get("http://localhost:3006/crops").then((res) => {
@@ -110,24 +116,28 @@ const Component = () => {
 
   function updateCrop(id: any) {
     // e.preventDefault();
+    const updateId = `${id}`;
     axios
-      .put(`http://localhost:3006/crops/${id}`, data)
-      .then((resp: AxiosResponse<any>) => {
-        nav(-1);
-      });
+      // .put(`http://localhost:3006/crops/${id}`, data)
+      .put(host + "/update-crop/" + updateId, data);
+    // .then((resp: AxiosResponse<any>) => {
+    nav(-1);
+    // });
   }
 
-  console.log("samp", data);
-
-  console.log("aaaaa", name);
+  console.log("data in form: ", data);
 
   return (
     <StyledContainer>
       <Form
+        form={form}
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
-        initialValues={{ remember: true }}
+        // initialValues={{ remember: true }}
+        initialValues={{
+          name: data ? data.name : "x",
+        }}
         // onFinish={handleSubmit}
         // onFinish={onFinish}
         // onFinishFailed={onFinishFailed}
@@ -135,18 +145,21 @@ const Component = () => {
       >
         <Form.Item
           label="Crop"
-          name={name}
+          name="name"
           rules={[
             {
-              required: true,
+              required: false,
               message: "Please input crop",
             },
           ]}
-          initialValue={name}
+          // initialValue={name}
+          // initialValue={{
+          //   name: data ? data.name : "XX",
+          // }}
         >
           <Input
             onChange={(e) => setName(e.target.value)}
-            // value={name}
+            value={name}
             style={{
               borderRadius: "50px",
               width: "300px",
@@ -157,9 +170,9 @@ const Component = () => {
 
         <Form.Item
           label="Description"
-          name={description}
+          name="description"
           rules={[{ required: true, message: "Please input description" }]}
-          initialValue={description}
+          // initialValue={description}
         >
           <Input.TextArea
             showCount
@@ -170,7 +183,7 @@ const Component = () => {
               cursor: "pointer",
             }}
             onChange={(e) => setDescription(e.target.value)}
-            value={description}
+            // value={description}
           />
         </Form.Item>
 
