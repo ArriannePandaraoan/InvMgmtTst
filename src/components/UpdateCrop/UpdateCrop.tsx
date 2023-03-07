@@ -42,6 +42,7 @@ const Component = () => {
   const [form] = Form.useForm();
 
   const host = process.env.REACT_APP_LIVE;
+  const tst = process.env.REACT_APP_API;
 
   const data = {
     name: name,
@@ -54,7 +55,7 @@ const Component = () => {
   useEffect(() => {
     // axios.get(`http://localhost:3006/crops/${loc.id}`).then((res) => {
     // axios.get(`http://localhost:4000/crops/${loc.id}`).then((res) => {
-    axios.get(host + `${"/crops/"}${loc.id}`).then((res) => {
+    axios.get(tst + `${"/crops/"}${loc.id}`).then((res) => {
       console.log("inside form: ", res);
       setName(res.data.name);
       setDescription(res.data.description);
@@ -106,7 +107,7 @@ const Component = () => {
     // e.preventDefault();
     axios
       // .put(`http://localhost:3006/crops/${id}`, data)
-      .put(host + `${"/update-crop/"}${id}`, data);
+      .put(tst + `${"/update-crop/"}${id}`, data);
     // .then((resp: AxiosResponse<any>) => {
     nav(-1);
     // });
