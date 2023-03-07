@@ -28,7 +28,7 @@ app.get("/crops/:id", (req, res) => {
   });
 });
 
-app.post("/add-crop", (req, res) => {
+app.post("/InvMgmtTst/add-crop", (req, res) => {
   const ADD_QUERY = `INSERT INTO crops (name, description, quantity, price, remark) VALUES ('${req.body.name}', '${req.body.description}', '${req.body.quantity}', '${req.body.price}', '${req.body.remark}' )`;
   connection.query(ADD_QUERY, (err) => {
     if (err) console.log(err);
@@ -42,7 +42,7 @@ app.delete("/delete-crop/:id", (req, res) => {
   });
 });
 
-app.put("/update-crop/:id", (req, res) => {
+app.put("/InvMgmtTst/update-crop/:id", (req, res) => {
   const UPDATE_QUERY = `UPDATE crops SET name='${req.body.name}', description='${req.body.description}', quantity='${req.body.quantity}', price='${req.body.price}', remark='${req.body.remark}' WHERE id='${req.params.id}'`;
   connection.query(UPDATE_QUERY, (err) => {
     if (err) console.log(err);

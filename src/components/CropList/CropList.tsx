@@ -5,7 +5,6 @@ import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Space, Table } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
-import { getCrops } from "../../api";
 
 const StyledContainer = styled.div`
   overflow: hidden !important;
