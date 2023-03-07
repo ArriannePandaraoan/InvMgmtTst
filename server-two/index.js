@@ -17,6 +17,10 @@ app.get("/crops", (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Hi");
+});
+
 app.get("/crops/:id", (req, res) => {
   const CROPS_IND_QUERY = `SELECT * FROM crops WHERE (id=${req.params.id})`;
   connection.query(CROPS_IND_QUERY, (err, response) => {
