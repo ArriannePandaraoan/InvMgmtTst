@@ -50,12 +50,13 @@ const Component = () => {
 
   const navigate: any = useNavigate();
 
-  const host = process.env.REACT_APP_LIVE;
-  const tst = process.env.REACT_APP_API;
+  // const host = process.env.REACT_APP_LIVE;
+  // const tst = process.env.REACT_APP_API;
 
   function getCrops() {
     // axios.get("http://localhost:3006/crops").then((response) => {
-    axios.get(host + `${"/crops"}`).then((response) => {
+    // axios.get(host + `${"/crops"}`).then((response) => {
+    axios.get("http://18.139.83.109:4000/crops").then((response) => {
       setCrops(
         response.data
           .reverse()
@@ -105,34 +106,6 @@ const Component = () => {
 
   console.log("crop", data);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:3006/crops").then((res) => {
-  //     // setCrops(res.data);
-  //     setCrops(
-  //       res.data
-  //         .reverse()
-  //         .map(
-  //           (crop: {
-  //             remark: any;
-  //             quantity: any;
-  //             name: any;
-  //             description: any;
-  //             id: any;
-  //             price: any;
-  //           }) => ({
-  //             name: crop.name,
-  //             description: crop.description,
-  //             quantity: crop.quantity.tolocaleString(),
-  //             price: crop.price,
-  //             remark: crop.remark,
-  //             id: crop.id,
-  //           })
-  //         )
-  //     );
-  //     console.log(crops);
-  //   });
-  // }, []);
-
   function nav(id: any) {
     navigate("/update-crop", { state: { id: id } });
   }
@@ -141,7 +114,8 @@ const Component = () => {
     console.log("deleted item", id);
     axios
       // .delete(`http://localhost:3006/crops/${id}`)
-      .delete(host + `${"/delete-crop/"}${id}`);
+      // .delete(host + `${"/delete-crop/"}${id}`);
+      .delete(`http://18.139.83.109:4000/delete-crop/${id}`);
     // .then((resp: AxiosResponse<any>) => {
     getCrops();
     // });
