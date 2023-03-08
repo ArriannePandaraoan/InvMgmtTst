@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd";
 import styled from "styled-components";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router";
 import axios, { AxiosResponse } from "axios";
 
@@ -34,15 +34,13 @@ const Component = () => {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   const [remark, setRemark] = useState("");
-  const [, setData] = useState({});
-  const [crops, setCrops] = useState<any[]>([]);
 
   const { id } = useParams();
 
   const [form] = Form.useForm();
 
-  // const host = process.env.REACT_APP_LIVE;
-  // const tst = process.env.REACT_APP_API;
+  const host = process.env.REACT_APP_LIVE;
+  const tst = process.env.REACT_APP_API;
 
   const data = {
     name: name,
@@ -53,9 +51,8 @@ const Component = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3006/crops/${loc.id}`).then((res) => {
-      // axios.get(`http://localhost:4000/crops/${loc.id}`).then((res) => {
-      // axios.get(tst + `${"/crops/"}${loc.id}`).then((res) => {
+    // axios.get(`http://localhost:3006/crops/${loc.id}`).then((res) => {
+    axios.get(host + `${"/crops/"}${loc.id}`).then((res) => {
       console.log("inside form: ", res);
       setName(res.data.name);
       setDescription(res.data.description);
@@ -65,49 +62,10 @@ const Component = () => {
     });
   }, []);
 
-  // function getCrops() {
-  //   axios.get("http://localhost:3006/crops").then((res) => {
-  //     setCrops(res.data.reverse());
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   getCrops();
-  // }, []);
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:3006/crops").then((res) => {
-  //     // setCrops(res.data);
-  //     setCrops(
-  //       res.data
-  //         .reverse()
-  //         .map(
-  //           (crop: {
-  //             remark: any;
-  //             quantity: any;
-  //             name: any;
-  //             description: any;
-  //             id: any;
-  //             price: any;
-  //           }) => ({
-  //             name: crop.name,
-  //             description: crop.description,
-  //             quantity: crop.quantity,
-  //             price: crop.price,
-  //             remark: crop.remark,
-  //             id: crop.id,
-  //           })
-  //         )
-  //     );
-  //     console.log(crops);
-  //   });
-  // }, []);
-
   function updateCrop(id: any) {
     // e.preventDefault();
-    axios
-      .put(`http://localhost:3006/crops/${id}`, data)
-      // .put(tst + `${"/update-crop/"}${id}`, data);
+    // axios.put(`http://localhost:3006/crops/${id}`, data);
+    axios.put(host + `${"/update-crop/"}${id}`, data);
     // .then((resp: AxiosResponse<any>) => {
     nav(-1);
     // });

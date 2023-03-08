@@ -50,19 +50,12 @@ const Component = () => {
 
   const navigate: any = useNavigate();
 
-  // const host = process.env.REACT_APP_LIVE;
-  // const tst = process.env.REACT_APP_API;
+  const host = process.env.REACT_APP_LIVE;
+  const tst = process.env.REACT_APP_API;
 
   function getCrops() {
     // axios.get("http://localhost:3006/crops").then((response) => {
-    // axios
-    //   .get(
-    //     "https://my-json-server.typicode.com/ArriannePandaraoan/json_db/crops"
-    //   )
-    //   .then((res) => {
-    // setCrops(res.data.reverse());
-    axios.get("http://52.221.206.2/crops").then((response) => {
-      // axios.get(tst + `${"/crops"}`).then((response) => {
+    axios.get(host + `${"/crops"}`).then((response) => {
       setCrops(
         response.data
           .reverse()
@@ -147,11 +140,11 @@ const Component = () => {
   function deleteList(id: any) {
     console.log("deleted item", id);
     axios
-      .delete(`http://localhost:3006/crops/${id}`)
-      // .delete(tst + `${"/delete-crop/"}${id}`)
-      .then((resp: AxiosResponse<any>) => {
-        getCrops();
-      });
+      // .delete(`http://localhost:3006/crops/${id}`)
+      .delete(host + `${"/delete-crop/"}${id}`);
+    // .then((resp: AxiosResponse<any>) => {
+    getCrops();
+    // });
   }
 
   function searchTable(rows: any) {

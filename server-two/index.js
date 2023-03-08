@@ -3,7 +3,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
-// eslint-disable-next-line no-unused-vars
 const connection = require("./db");
 
 const app = express();
@@ -31,14 +30,14 @@ app.get("/", (req, res) => {
 //   }
 // );
 
-const file = fs.readFileSync("./F631311F44F17A17E8EF6F4E532F0ED8.txt");
+// const file = fs.readFileSync("./F631311F44F17A17E8EF6F4E532F0ED8.txt");
 
-app.get(
-  "/.well-known/pki-validation/F631311F44F17A17E8EF6F4E532F0ED8.txt",
-  (req, res) => {
-    res.send(file);
-  }
-);
+// app.get(
+//   "/.well-known/pki-validation/F631311F44F17A17E8EF6F4E532F0ED8.txt",
+//   (req, res) => {
+//     res.send(file);
+//   }
+// );
 
 app.get("/crops/:id", (req, res) => {
   const CROPS_IND_QUERY = `SELECT * FROM crops WHERE (id=${req.params.id})`;
