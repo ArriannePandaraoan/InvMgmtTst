@@ -39,8 +39,8 @@ const Component = () => {
 
   const [form] = Form.useForm();
 
-  // const host = process.env.REACT_APP_LIVE;
-  // const tst = process.env.REACT_APP_API;
+  const host = process.env.REACT_APP_LIVE;
+  const local = process.env.REACT_APP_API;
 
   const data = {
     name: name,
@@ -52,8 +52,8 @@ const Component = () => {
 
   useEffect(() => {
     // axios.get(`http://localhost:3006/crops/${loc.id}`).then((res) => {
-    // axios.get(host + `${"/crops/"}${loc.id}`).then((res) => {
-    axios.get(`http://18.139.83.109:4000/crops/${loc.id}`).then((res) => {
+    axios.get(host + `${"/crops/"}${loc.id}`).then((res) => {
+      // axios.get(`http://18.139.83.109:4000/crops/${loc.id}`).then((res) => {
       console.log("inside form: ", res);
       setName(res.data.name);
       setDescription(res.data.description);
@@ -65,9 +65,9 @@ const Component = () => {
 
   function updateCrop(id: any) {
     // e.preventDefault();
-    axios.put(`http://localhost:3006/crops/${id}`, data);
+    // axios.put(`http://localhost:3006/crops/${id}`, data);
     // axios.put(`http://18.139.83.109:4000/crops/${id}`, data);
-    // axios.put(host + `${"/update-crop/"}${id}`, data);
+    axios.put(host + `${"/update-crop/"}${id}`, data);
     // .then((resp: AxiosResponse<any>) => {
     nav(-1);
     // });

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import React, { useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
-import { CropValidation } from "../CropValidation/CropValidation";
 
 const StyledContainer = styled.div`
   width: 100%;
@@ -32,7 +31,7 @@ const Component = () => {
   const [remark, setRemark] = useState("");
 
   const host = process.env.REACT_APP_LIVE;
-  const tst = process.env.REACT_APP_API;
+  const local = process.env.REACT_APP_API;
 
   const data = {
     name: name,
@@ -44,27 +43,14 @@ const Component = () => {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    axios.post("http://localhost:3006/crops/add-crop", data);
+    // axios.post("http://localhost:3006/crops/add-crop", data);
     // axios.post("http://18.139.83.109:4000/crops/add-crop", data);
-    // axios.post(host + `${"/add-crop"}`, data);
+    axios.post(host + `${"/add-crop"}`, data);
     // .then((response: AxiosResponse<any>) => {
     // .then((response) => {
     nav(-1);
     // });
   }
-
-  const addCropValidation = async (e: any) => {
-    e.preventDefault();
-    let cropData = {
-      name: e.target[0].value,
-      description: e.target[1].value,
-      quantity: e.target[2].value,
-      price: e.target[3].value,
-      remark: e.target[4].value,
-    };
-    const isValid = await CropValidation.isValid(cropData);
-    console.log(isValid);
-  };
 
   return (
     <StyledContainer>
@@ -74,7 +60,6 @@ const Component = () => {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         autoComplete="off"
-        onFinish={(values) => addCropValidation(values)}
       >
         <Form.Item
           label="Crop"
