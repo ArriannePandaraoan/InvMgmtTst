@@ -65,8 +65,8 @@ const Component = () => {
 
   function updateCrop(id: any) {
     // e.preventDefault();
-    // axios.put(`http://localhost:3006/crops/${id}`, data);
-    axios.put(`http://18.139.83.109:4000/crops/${id}`, data);
+    axios.put(`http://localhost:3006/crops/${id}`, data);
+    // axios.put(`http://18.139.83.109:4000/crops/${id}`, data);
     // axios.put(host + `${"/update-crop/"}${id}`, data);
     // .then((resp: AxiosResponse<any>) => {
     nav(-1);

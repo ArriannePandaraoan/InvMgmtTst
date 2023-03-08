@@ -44,12 +44,9 @@ const Component = () => {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    // axios.post("http://localhost:3006/crops/add-crop", data);
-    // .post(
-    //   "https://my-json-server.typicode.com/ArriannePandaraoan/json_db/crops",
-    //   data
-    // )
-    axios.post(host + `${"/add-crop"}`, data);
+    axios.post("http://localhost:3006/crops/add-crop", data);
+    // axios.post("http://18.139.83.109:4000/crops/add-crop", data);
+    // axios.post(host + `${"/add-crop"}`, data);
     // .then((response: AxiosResponse<any>) => {
     // .then((response) => {
     nav(-1);
